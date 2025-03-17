@@ -1,18 +1,11 @@
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
+import { Image } from "../ImageCard/ImageCard";
 
-interface Picture {
-  id: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-  alt_description?: string;
-}
 
 interface ImageGalleryProps {
-  pictures: Picture[];
-  onClick: (picture: Picture) => void;
+  pictures: Image[];
+  onClick: (picture: Image) => void;
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ pictures, onClick }) => {

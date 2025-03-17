@@ -9,15 +9,13 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import Modal from "react-modal";
 import toast from "react-hot-toast";
+import { Image } from "./components/ImageCard/ImageCard";
 
-type Image = {
-  id: string;
-  alt_description?: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
-};
+
+interface ApiResponse {
+  results: Image[];
+  total_pages: number;
+}
 
 function App() {
   const [pictures, setPictures] = useState<Image[]>([]);
@@ -52,7 +50,9 @@ function App() {
       try {
         setError(false);
         setLoading(true);
-        const response = await axios.get(
+        
+        
+        const response = await axios.get<ApiResponse>(
           "https://api.unsplash.com/search/photos",
           {
             params: {

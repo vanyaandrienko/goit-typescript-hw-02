@@ -1,18 +1,18 @@
 import React from "react";
 import css from "./ImageCard.module.css";
 
-interface Picture {
+export interface Image {
   id: string;
+  alt_description?: string;
   urls: {
     small: string;
     regular: string;
   };
-  alt_description?: string;
 }
 
 interface ImageCardProps {
-  picture: Picture;
-  onClick: (picture: Picture) => void;
+  picture: Image;
+  onClick: (picture: Image) => void;
 }
 
 const ImageCard: React.FC<ImageCardProps> = ({ picture, onClick }) => {
